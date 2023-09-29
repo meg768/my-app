@@ -29,45 +29,34 @@ const Popper = (props) => {
 		],
 	});
 
-    useEffect(() => {
+	useEffect(() => {
+		function onDocumentClick(event) {
+            console.log('Document click');
+			if (visible) {
+				if (trigger.contains(event.target)) {
+					console.log('Inside target', event.target);
+				} else if (popper.contains(event.target)) {
+					console.log('Inside dropdown', event.target);
+					setVisible(false);
+				} else {
+					console.log('Both outside target and dropdown', event.target);
+					setVisible(false);
+				}
 
-        function onDocumentClick(event) {
+                
+			}
+		}
 
-            if (visible) {
-    
-                if (trigger.contains(event.target)) {
-                    console.log('Inside target', event.target);
-                }
-                else if (popper.contains(event.target)) {
-                    console.log('Inside dropdown', event.target);
-                    setVisible(false);
-                    
-                }
-    
-                else  {
-                    console.log('Both outside target and dropdown', event.target);
-                    setVisible(false);
-                }
-    
-            }
-        }
-    
-        if (visible) {
-            console.log('Adding document click');
-            document.addEventListener('click', onDocumentClick, false);
-    
-            return function cleanup() {
-                console.log('Removing document click');
-                document.removeEventListener('click', onDocumentClick, false);
-    
-            }
-    
-        }
+		if (visible) {
+			console.log('Adding document click');
+			document.addEventListener('click', onDocumentClick, false);
 
-    }, [popper]);
-
-
-
+			return function cleanup() {
+				console.log('Removing document click');
+				document.removeEventListener('click', onDocumentClick, false);
+			};
+		}
+	}, [popper]);
 
 	function getChildOfType(type) {
 		return React.Children.toArray(props.children).find((child) => {
@@ -77,6 +66,19 @@ const Popper = (props) => {
 
 	function onTriggerClick(event) {
 		setVisible(!visible);
+	}
+
+	function renderPopperX() {
+		let style = { ...styles.popper };
+
+        console.log('Rendering popperX')
+		style.display = visible ? 'block' : 'none';
+
+		return (
+			<div ref={setPopper} style={style} {...attributes.popper}>
+				{contentElement}
+			</div>
+		);
 	}
 
 	function renderPopper() {
