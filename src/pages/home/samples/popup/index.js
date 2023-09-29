@@ -49,8 +49,7 @@ export default function (props) {
 
 		return (
 			<Popup>
-                
-                <button className='btn btn-primary m-1'>
+				<button className='btn btn-primary m-1'>
 					Radio <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
@@ -143,16 +142,15 @@ export default function (props) {
 		function onChange(event) {
 			let volume = event.target.value;
 			setConfig({ ...config, volume: volume });
-			setText(`Ljudvolym ${volume}%`);
+			setText(`Ljudvolym ${volume * 10}%`);
 		}
 
 		return (
 			<Popup>
 				<button className='btn btn-primary m-1'>
-					Ljudvolym <span style={{ fontSize: '75%' }}>▼</span>
+					Range <span style={{ fontSize: '70%' }}>▼</span>
 				</button>
-
-				<div className='Dropdown dropdown-menu mt-1 pb-1 show shadow-sm' xonClick={ignoreClick}>
+				<div className='dropdown-menu mt-1 pb-1 show shadow-sm' xonClick={ignoreClick}>
 					<div className='dropdown-item hover:none' onClick={ignoreClick}>
 						<input type='range' min='0' max='10' step='1' className='form-range' value={config.volume} onChange={onChange} onClick={ignoreClick} />
 					</div>
