@@ -23,7 +23,7 @@ export default function (props) {
 				Visa
 			</button>
 			<Fade duration={100} show={visible} className='modal d-block' tabindex='-1'>
-				<div className='modal-dialog modal-dialog-centeredx'>
+				<div className='modal-dialog modal-dialog-centeredXXX'>
 					<div className='modal-content  shadow-sm'>
 						<div className='modal-header' >
 							<p className='modal-title' style={{fontSize:'150%'}} >Titel</p>
