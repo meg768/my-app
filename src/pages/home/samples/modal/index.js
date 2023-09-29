@@ -25,9 +25,9 @@ export default function (props) {
 			<Fade duration={100} show={visible} className='modal d-block' tabindex='-1'>
 				<div className='modal-dialog modal-dialog-centeredx'>
 					<div className='modal-content  shadow-sm'>
-						<div className='modal-header'>
-							<h5 className='modal-title'>Titel</h5>
-							<button type='button' onClick={onClose} class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+						<div className='modal-header' >
+							<p className='modal-title' style={{fontSize:'150%'}} >Titel</p>
+							<button type='button' onClick={onClose} className='btn-close' style={{fontSize:'60%'}}></button>
 						</div>
 						<div className='modal-body'>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet arcu auctor feugiat congue. Duis in laoreet ex. Vivamus suscipit in nisl sit amet mollis. Phasellus lacinia viverra tempor. </p>

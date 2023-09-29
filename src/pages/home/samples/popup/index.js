@@ -5,6 +5,16 @@ import './index.scss';
 import Popup from '../../../../components/popup';
 import classNames from 'classnames';
 
+function DropdownButton(props) {
+
+    var {text, ...props} = props;
+
+	return (
+		<button className='btn btn-primary m-1' {...props}>
+			{text} <span style={{ fontSize: '75%' }}>▼</span>
+		</button>
+	);
+}
 
 export default function (props) {
 	var { template: Template, ...props } = props;
@@ -39,7 +49,8 @@ export default function (props) {
 
 		return (
 			<Popup>
-				<button className='btn btn-primary m-1'>
+                
+                <button className='btn btn-primary m-1'>
 					Radio <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
@@ -192,7 +203,7 @@ export default function (props) {
 			{rangeSample()}
 
 			<br />
-				<label className='form-label p-1'>{text}</label>
+			<label className='form-label p-1'>{text}</label>
 		</Template>
 	);
 }
