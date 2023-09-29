@@ -1,18 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-//import './bootswatch/united/bootstrap.css';
-
-
-//import './bootstrap/bootstrap.scss';
-//import './bootswatch/litera/_variables.scss';
-
-//import './bootstrap/bootstrap.scss';
-
-//import './bootswatch/litera/scss/bootstrap.scss';
-
-
-// Import basic CSS
 import './index.scss';
 
 // Import router stuff

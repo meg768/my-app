@@ -1,7 +1,15 @@
 
 
 //@import "./bootswatch/materia/variables";
+//@import "./bootswatch/darkly/variables";
+//@import "./bootswatch/cerulean/variables";
+//@import "./bootswatch/slate/variables";
+
+
+
+@import "./bootswatch/united/variables";
 @import "./bootstrap/bootstrap.scss";
+@import "./bootswatch/united/bootswatch";
 
 
 body {
