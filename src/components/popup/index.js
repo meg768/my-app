@@ -1,7 +1,6 @@
 import './index.scss';
 import React, { useEffect, useState, useRef } from 'react';
 import { usePopper } from 'react-popper';
-import Animation from '../../components/animation';
 import Fade from '../../components/fade';
 
 const Component = (args) => {

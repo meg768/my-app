@@ -1,7 +1,5 @@
 import React from 'react';
 import Page from '../../components/page';
-import Button from '../../components/button';
-import { Container } from 'react-bootstrap';
 
 export default function (props) {
 	return (
