@@ -2,30 +2,12 @@ import React from 'react';
 
 import './index.scss';
 
-import Page from '../../components/page';
-import Popup from '../../components/popup';
-import Fade from '../../components/fade';
+import Popup from '../../../../components/popup';
 import classNames from 'classnames';
-import ModalSample from './samples/modal';
-import PopupSample from './samples/popup';
 
-function Sample(props) {
-	var { title, children, ...props } = props;
+export default function (props) {
+	var { template: Template, ...props } = props;
 
-	return (
-		<div className='alert alert-light shadow-sm'>
-			<h4 className='alert-heading'>{title}</h4>
-			<hr />
-			{children}
-		</div>
-	);
-}
-
-
-
-
-export default function() {
-    
 	let defaultConfig = {
 		volume: 3,
 		options: 'A',
@@ -202,15 +184,12 @@ export default function() {
 	};
 
 	return (
-		<Page className='Home p-5' title='Vår hemsida'>
-			<div>
-				<a href='#/about' className='btn btn-primary'>
-					Om oss
-				</a>
-
-                <PopupSample template={Sample}/>
-                <ModalSample template={Sample}/>
-			</div>
-		</Page>
+		<Template title='Exempel på popups med Bootstrap CSS'>
+			{radioSample()}
+			{switchSample()}
+			{popoverSample()}
+			{rangeSample()}
+			<div className='p-1'>{text}</div>
+		</Template>
 	);
-};
+}
