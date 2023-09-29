@@ -5,6 +5,7 @@ import './index.scss';
 import Popup from '../../../../components/popup';
 import classNames from 'classnames';
 
+
 export default function (props) {
 	var { template: Template, ...props } = props;
 
