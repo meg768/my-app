@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Fade(args) {
-	const { show, tag: Tag = 'span', style = {}, unmount = true, duration = 500, children, ...props } = args;
+	const { show, tag: Tag = 'span', style = {}, unmount = true, duration = 100, children, ...props } = args;
 
 	const elementRef = React.useRef();
 	const [visible, setVisible] = React.useState(show);
@@ -27,7 +27,7 @@ export default function Fade(args) {
 				};
 			}
 		}
-	});
+	}, [show]);
 
 	if (unmount && !visible) {
 		return;
