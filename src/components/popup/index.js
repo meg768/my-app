@@ -22,7 +22,7 @@ const Component = (args) => {
 	}
 
 	const { styles, attributes } = usePopper(trigger, popper, {
-		placement: placement,
+		placement: placement
 	});
 
 	function debug() {
@@ -46,15 +46,13 @@ const Component = (args) => {
 		}
 
 		if (visible) {
-			debug('Adding document click');
 			document.addEventListener('click', onDocumentClick, false);
 
 			return function cleanup() {
-				debug('Removing document click');
 				document.removeEventListener('click', onDocumentClick, false);
 			};
 		}
-	});
+	}, [popper]);
 
 	function renderPopper() {
 		let clone = React.cloneElement(popperElement, { ref: setPopper, style: { ...styles.popper }, ...attributes.popper });

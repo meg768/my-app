@@ -5,8 +5,53 @@ import './index.scss';
 import Page from '../../components/page';
 import Popup from '../../components/popup';
 import Animation from '../../components/animation';
+import Fade from '../../components/fade';
 import classNames from 'classnames';
 
+function ModalSampe(props) {
+	const [visible, setVisible] = React.useState(false);
+
+	function onClick(event) {
+		setVisible(!visible);
+	}
+
+    function onClose(event) {
+        setVisible(false);
+    }
+
+	return (
+		<div>
+			<button onClick={onClick} className='btn btn-primary m-1'>Modal</button>
+            <Fade duration={500} show={visible}>
+                HEJ
+            </Fade>
+            <Fade duration={500} show={visible}>
+			<div style={{ display: visible ? 'block' : 'block' }} className=' modal show x' tabindex='-1'>
+				<div className='modal-dialog modal-dialog-centered'>
+					<div className='modal-content'>
+						<div className='modal-header'>
+							<h5 className='modal-title'>Modal title</h5>
+							<button type='button' onClick={onClose} class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+						</div>
+						<div className='modal-body'>
+							<p>Modal body text goes here.</p>
+						</div>
+						<div className='modal-footer'>
+							<button type='button' onClick={onClose} className='btn btn-secondary' data-bs-dismiss='modal'>
+								Close
+							</button>
+							<button type='button' onClick={onClose} className='btn btn-primary'>
+								Save changes
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            </Fade>
+		</div>
+	);
+}
 
 const Foo = () => {
 	let defaultConfig = {
@@ -93,7 +138,7 @@ const Foo = () => {
 					Switch <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-				<div className='Dropdown dropdown-menu mt-1 show shadow-sm' xonClick={ignoreClick}>
+				<div className=' dropdown-menu mt-1 show shadow-sm' xonClick={ignoreClick}>
 					<div className='dropdown-header' onClick={ignoreClick}>
 						Alternativ
 					</div>
@@ -141,7 +186,7 @@ const Foo = () => {
 					Ljudvolym <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-				<div className='Dropdown dropdown-menu mt-1 pb-1 show shadow-sm' xonClick={ignoreClick}>
+				<div className=' dropdown-menu mt-1 pb-1 show shadow-sm' xonClick={ignoreClick}>
 					<div className='dropdown-item hover:none' onClick={ignoreClick}>
 						<input type='range' min='0' max='10' step='1' className='form-range' value={config.volume} onChange={onChange} onClick={ignoreClick} />
 					</div>
@@ -162,7 +207,7 @@ const Foo = () => {
 				</button>
 
 				<div className='popover mt-1 shadow-sm'>
-					<div style={{ xfontSize: '95%' }} className='py-1 popover-header'>
+					<div style={{}} className='py-1 popover-header'>
 						Välj kategori
 					</div>
 
@@ -184,8 +229,6 @@ const Foo = () => {
 		);
 	};
 
-
-
 	return (
 		<Page className='Home p-5' title='Vår hemsida'>
 			<div>
@@ -201,6 +244,8 @@ const Foo = () => {
 				{rangeSample()}
 			</div>
 			<div className='p-1'>{text}</div>
+			<br />
+			<ModalSampe />
 		</Page>
 	);
 };
