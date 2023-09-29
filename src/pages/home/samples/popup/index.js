@@ -15,7 +15,7 @@ export default function (props) {
 		checkB: false,
 		checkC: false,
 	};
-	const [text, setText] = React.useState('');
+	const [text, setText] = React.useState('.');
 	const [config, setConfig] = React.useState(defaultConfig);
 	const [show, setShow] = React.useState(false);
 
@@ -189,7 +189,9 @@ export default function (props) {
 			{switchSample()}
 			{popoverSample()}
 			{rangeSample()}
-			<div className='p-1'>{text}</div>
+
+			<br />
+				<label className='form-label p-1'>{text}</label>
 		</Template>
 	);
 }

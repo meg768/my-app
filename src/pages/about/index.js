@@ -6,9 +6,10 @@ import { Container } from 'react-bootstrap';
 export default function (props) {
 	return (
 		<Page title='Om oss' className='p-5'>
-				<Button className='btn-primary' href='#/home'>
+				<a className='btn btn-primary' href='#/home'>
 					Vår hemsida
-				</Button>
+				</a>
+                <hr/>
 		</Page>
 	);
 }
