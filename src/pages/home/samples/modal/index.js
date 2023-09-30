@@ -4,6 +4,7 @@ import './index.scss';
 import Fade from '../../../../components/fade';
 import classNames from 'classnames';
 
+
 export default function (props) {
 	var { template: Template, ...props } = props;
 
@@ -24,7 +25,7 @@ export default function (props) {
 			<button onClick={onClick} className='btn btn-primary'>
 				Visa modalt
 			</button>
-			<Fade duration={150} show={visible} className='backdrop modal d-block' tabindex='-1'>
+			<Fade duration={150} show={visible} style={{display:'block'}} className='backdrop modal ' tabindex='-1'>
 				<div  className='modal-dialog modal-dialog-centeredx' >
 					<div className='modal-content shadow-sm'>
 						<div className='modal-header' >
