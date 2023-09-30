@@ -17,14 +17,16 @@ export default function (props) {
 		setVisible(false);
 	}
 
+    
 	return (
+
 		<Template title='Exempel på modalt'>
-			<button onClick={onClick} className='btn btn-primary m-1'>
-				Visa
+			<button onClick={onClick} className='btn btn-primary'>
+				Visa modalt
 			</button>
-			<Fade duration={100} show={visible} className='modal d-block' tabindex='-1'>
-				<div className='modal-dialog modal-dialog-centeredXXX'>
-					<div className='modal-content  shadow-sm'>
+			<Fade duration={150} show={visible} className='backdrop modal d-block' tabindex='-1'>
+				<div  className='modal-dialog modal-dialog-centeredx' >
+					<div className='modal-content shadow-sm'>
 						<div className='modal-header' >
 							<p className='modal-title' style={{fontSize:'150%'}} >Titel</p>
 							<button type='button' onClick={onClose} className='btn-close' style={{fontSize:'60%'}}></button>

@@ -7,8 +7,8 @@ export default function Fade(args) {
 	const [visible, setVisible] = React.useState(show);
 
 	React.useEffect(() => {
-		const from = { opacity: 0 };
-		const to = { opacity: 1 };
+		const from = { ...style, opacity: 0 };
+		const to = { ...style, opacity: 1 };
 		const options = { duration: duration, fill: 'forwards' };
 		const element = elementRef.current;
 
@@ -16,6 +16,7 @@ export default function Fade(args) {
 			setVisible(true);
 
 			if (element) {
+  //              element.style.display = 'block';
 				element.animate([from, to], options);
 			}
 		} else {
@@ -23,11 +24,13 @@ export default function Fade(args) {
 				const animation = element.animate([to, from], options);
 
 				animation.onfinish = () => {
+//                    element.style.display = 'none';
 					setVisible(false);
 				};
 			}
 		}
-	}, [show]);
+	});
+
 
 	if (unmount && !visible) {
 		return;
@@ -36,6 +39,9 @@ export default function Fade(args) {
 	if (!visible) {
 		style.display = 'none';
 	}
+    else {
+//        style.display = 'block';
+    }
 
 	return (
 		<Tag ref={elementRef} {...props} style={style}>

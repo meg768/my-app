@@ -1,10 +1,9 @@
 import './index.scss';
 import React, { useEffect, useState, useRef } from 'react';
 import { usePopper } from 'react-popper';
-import Fade from '../../components/fade';
 
 const Component = (args) => {
-	let { placement = 'bottom-start', ...props } = args;
+	let { unmount = false, placement = 'bottom-start', ...props } = args;
 
 	const [visible, setVisible] = useState(false);
 	const [trigger, setTrigger] = useState(null);
@@ -51,16 +50,21 @@ const Component = (args) => {
 				document.removeEventListener('click', onDocumentClick, false);
 			};
 		}
-	}, [popper]);
+	}, [popper, visible]);
 
 	function renderPopper() {
-		let clone = React.cloneElement(popperElement, { ref: setPopper, style: { ...styles.popper }, ...attributes.popper });
+        if (unmount && !visible)
+            return null;
 
-		return (
-			<Fade show={visible}>
-				{clone}
-			</Fade>
-		);
+        let style = { ...styles.popper };
+
+        if (!visible) {
+            style.display = 'none';
+        }
+
+		let clone = React.cloneElement(popperElement, { ref: setPopper, ...attributes.popper, style:style  });
+//        return clone;
+        return visible ? clone : undefined;
 	}
 
 	function renderTrigger() {

@@ -3,6 +3,7 @@ import React from 'react';
 import './index.scss';
 
 import Popup from '../../../../components/popup';
+import Fade from '../../../../components/fade';
 import classNames from 'classnames';
 
 function DropdownButton(props) {
@@ -53,7 +54,7 @@ export default function (props) {
 					Radio <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-				<div className='Dropdown dropdown-menu mt-1 show shadow-sm'>
+				<div className=' dropdown-menu mt-1 show shadow-sm'>
 					<div className='dropdown-header' onClick={ignoreClick}>
 						Välj alternativ
 					</div>
@@ -103,7 +104,7 @@ export default function (props) {
 					Switch <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-				<div className='Dropdown dropdown-menu mt-1 show shadow-sm' xonClick={ignoreClick}>
+				<div className=' dropdown-menu mt-1 show shadow-sm' xonClick={ignoreClick}>
 					<div className='dropdown-header' onClick={ignoreClick}>
 						Alternativ
 					</div>
@@ -129,6 +130,7 @@ export default function (props) {
 						</div>
 					</div>
 				</div>
+
 			</Popup>
 		);
 	};
