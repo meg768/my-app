@@ -4,6 +4,9 @@ import './index.scss';
 import Fade from '../../../../components/fade';
 import classNames from 'classnames';
 
+function Modal(props) {
+
+}
 
 export default function (props) {
 	var { template: Template, ...props } = props;
@@ -18,18 +21,29 @@ export default function (props) {
 		setVisible(false);
 	}
 
-    
+    let blur = 'blur(3px)';
+
+    let modalStyle = {
+        'backdrop-filter': blur,
+        '-webkit-backdrop-filter': blur,
+        backgroundColor: 'rgba(0,0,0,0.70)',
+        display: 'block'            
+    };
+
+    let modalClass = 'modal';
+
+
 	return (
 
-		<Template title='Exempel på modalt'>
+		<Template title='Exempel på modalt' className='ModalSample'>
 			<button onClick={onClick} className='btn btn-primary'>
 				Visa modalt
 			</button>
-			<Fade duration={150} show={visible} style={{display:'block'}} className='backdrop modal ' tabindex='-1'>
+			<Fade duration={300} show={visible} style={modalStyle} className={modalClass} tabindex='-1'>
 				<div  className='modal-dialog modal-dialog-centeredx' >
 					<div className='modal-content shadow-sm'>
 						<div className='modal-header' >
-							<p className='modal-title' style={{fontSize:'150%'}} >Titel</p>
+							<p className='modal-title' style={{fonstSize:'150%'}} >Pax Vobiscum</p>
 							<button type='button' onClick={onClose} className='btn-close' style={{fontSize:'60%'}}></button>
 						</div>
 						<div className='modal-body'>

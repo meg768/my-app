@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './index.scss';
 
@@ -6,11 +7,13 @@ import Page from '../../components/page';
 import ModalSample from './samples/modal';
 import PopupSample from './samples/popup';
 
-function Sample(props) {
-	var { title, children, ...props } = props;
+function Template(props) {
+	var { title, className, children, className, ...props } = props;
+
+    className = classNames('alert alert-light shadow-sm', className);
 
 	return (
-		<div className='alert alert-light shadow-sm'>
+		<div className={className}>
 			<h4 className='alert-heading'>{title}</h4>
 			<hr />
 			{children}
@@ -30,8 +33,8 @@ export default function() {
 				</a>
                 <hr/>
 
-                <PopupSample template={Sample}/>
-                <ModalSample template={Sample}/>
+                <PopupSample template={Template}/>
+                <ModalSample template={Template}/>
 			</div>
 		</Page>
 	);
