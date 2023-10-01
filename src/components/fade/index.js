@@ -1,16 +1,17 @@
 import React from 'react';
 
-export default function Fade(args) {
-	const { show, tag: Tag = 'span', style = {}, unmount = true, duration = 100, children, ...props } = args;
 
-	const elementRef = React.useRef();
+
+export default function Fade(args) {
+	const { show = false, tag: Tag = 'div', duration = 100, children, ...props } = args;
+
+	const [element, setElement] = React.useState(null);
 	const [visible, setVisible] = React.useState(show);
 
 	React.useEffect(() => {
-		const from = { ...style, opacity: 0 };
-		const to = { ...style, opacity: 1 };
+		const from = { opacity: 0 };
+		const to = { opacity: 1 };
 		const options = { duration: duration, fill: 'forwards' };
-		const element = elementRef.current;
 
 		if (show) {
 			setVisible(true);
@@ -29,20 +30,12 @@ export default function Fade(args) {
 		}
 	});
 
-
-	if (unmount && !visible) {
+	if (!visible) {
 		return;
 	}
 
-	if (!visible) {
-		style.display = 'none';
-	}
-    else {
-//        style.display = 'block';
-    }
-
 	return (
-		<Tag ref={elementRef} {...props} style={style}>
+		<Tag ref={setElement} {...props}>
 			{children}
 		</Tag>
 	);

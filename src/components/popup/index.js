@@ -3,7 +3,7 @@ import React from 'react';
 
 import { usePopper } from 'react-popper';
 
-const Component = (args) => {
+const Popup = (args) => {
 	let { placement = 'bottom-start', ...props } = args;
 
 	const UNMOUNTED = 0;
@@ -120,4 +120,4 @@ const Component = (args) => {
 	);
 };
 
-export default Component;
+export default Popup;

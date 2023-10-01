@@ -21,8 +21,8 @@ export default function (props) {
 		setVisible(false);
 	}
 
-    let blur = 'blur(2px)';
-    let backgoundColor = 'rgba(0,0,0,0.25)';
+    let blur = 'blur(1px)';
+    let backgoundColor = 'rgba(0,0,0,0.10)';
 
     let modalStyle = {
         'backdrop-filter': blur,
@@ -31,8 +31,6 @@ export default function (props) {
         display: 'block'            
     };
 
-    let modalClass = 'modal';
-
 
 	return (
 
@@ -40,8 +38,8 @@ export default function (props) {
 			<button onClick={onClick} className='btn btn-primary'>
 				Visa modalt
 			</button>
-			<Fade duration={300} show={visible} style={modalStyle} className={modalClass} tabindex='-1'>
-				<div  className='modal-dialog modal-dialog-centeredx' >
+			<Fade duration={200} show={visible} style={modalStyle} className='modal' tabindex='-1'>
+				<div  className='modal-dialog modal-dialog-centered' >
 					<div className='modal-content shadow-sm'>
 						<div className='modal-header' >
 							<p className='modal-title' style={{fontSize:'150%'}} >Pax Vobiscum</p>
