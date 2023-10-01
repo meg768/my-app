@@ -21,12 +21,13 @@ export default function (props) {
 		setVisible(false);
 	}
 
-    let blur = 'blur(3px)';
+    let blur = 'blur(2px)';
+    let backgoundColor = 'rgba(0,0,0,0.25)';
 
     let modalStyle = {
         'backdrop-filter': blur,
         '-webkit-backdrop-filter': blur,
-        backgroundColor: 'rgba(0,0,0,0.70)',
+        backgroundColor: backgoundColor,
         display: 'block'            
     };
 
@@ -43,7 +44,7 @@ export default function (props) {
 				<div  className='modal-dialog modal-dialog-centeredx' >
 					<div className='modal-content shadow-sm'>
 						<div className='modal-header' >
-							<p className='modal-title' style={{fonstSize:'150%'}} >Pax Vobiscum</p>
+							<p className='modal-title' style={{fontSize:'150%'}} >Pax Vobiscum</p>
 							<button type='button' onClick={onClose} className='btn-close' style={{fontSize:'60%'}}></button>
 						</div>
 						<div className='modal-body'>
@@ -51,7 +52,7 @@ export default function (props) {
 						</div>
 						<div className='modal-footer'>
 							<button type='button' onClick={onClose} className='btn btn-primary'>
-								Stäng
+								Acceptera alla cookies
 							</button>
 						</div>
 					</div>
