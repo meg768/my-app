@@ -7,8 +7,7 @@ import Fade from '../../../../components/fade';
 import classNames from 'classnames';
 
 function DropdownButton(props) {
-
-    var {text, ...props} = props;
+	var { text, ...props } = props;
 
 	return (
 		<button className='btn btn-primary m-1' {...props}>
@@ -54,30 +53,30 @@ export default function (props) {
 					Radio <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-				<div className=' dropdown-menu mt-1 show shadow-sm'>
-					<div className='dropdown-header' onClick={ignoreClick}>
-						Välj alternativ
-					</div>
+                <div className=' dropdown-menu mt-1 show shadow-sm'>
+                    <div className='dropdown-header' onClick={ignoreClick}>
+                        Välj alternativ
+                    </div>
 
-					<div className='dropdown-item  hover:none' onClick={optionA}>
-						<div className='form-check'>
-							<input className='form-check-input' type='radio' role='switch' onChange={optionA} checked={config.options == 'A'} />
-							<label className='form-check-label ps-1'>Alternativ A</label>
-						</div>
-					</div>
-					<div className='dropdown-item hover:none' onClick={optionB}>
-						<div className='form-check'>
-							<input className='form-check-input' type='radio' role='switch' onChange={optionB} checked={config.options == 'B'} />
-							<label className='form-check-label ps-1'>Alternativ B</label>
-						</div>
-					</div>
-					<div className='dropdown-item hover:none' onClick={optionC}>
-						<div className='form-check'>
-							<input className='form-check-input' type='radio' role='switch' onChange={optionC} checked={config.options == 'C'} />
-							<label className='form-check-label ps-1'>Alternativ C</label>
-						</div>
-					</div>
-				</div>
+                    <div className='dropdown-item  hover:none' onClick={optionA}>
+                        <div className='form-check'>
+                            <input className='form-check-input' type='radio' role='switch' onChange={optionA} checked={config.options == 'A'} />
+                            <label className='form-check-label ps-1'>Alternativ A</label>
+                        </div>
+                    </div>
+                    <div className='dropdown-item hover:none' onClick={optionB}>
+                        <div className='form-check'>
+                            <input className='form-check-input' type='radio' role='switch' onChange={optionB} checked={config.options == 'B'} />
+                            <label className='form-check-label ps-1'>Alternativ B</label>
+                        </div>
+                    </div>
+                    <div className='dropdown-item hover:none' onClick={optionC}>
+                        <div className='form-check'>
+                            <input className='form-check-input' type='radio' role='switch' onChange={optionC} checked={config.options == 'C'} />
+                            <label className='form-check-label ps-1'>Alternativ C</label>
+                        </div>
+                    </div>
+                </div>
 			</Popup>
 		);
 	};
@@ -104,7 +103,7 @@ export default function (props) {
 					Switch <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-				<div className=' dropdown-menu mt-1 show shadow-sm' xonClick={ignoreClick}>
+				<div className=' dropdown-menu mt-1 show shadow-sm' >
 					<div className='dropdown-header' onClick={ignoreClick}>
 						Alternativ
 					</div>
@@ -130,7 +129,6 @@ export default function (props) {
 						</div>
 					</div>
 				</div>
-
 			</Popup>
 		);
 	};
@@ -152,7 +150,7 @@ export default function (props) {
 				<button className='btn btn-primary m-1'>
 					Range <span style={{ fontSize: '70%' }}>▼</span>
 				</button>
-				<div className='dropdown-menu mt-1 pb-1 show shadow-sm' xonClick={ignoreClick}>
+				<div className='dropdown-menu mt-1 pb-1 show shadow-sm' >
 					<div className='dropdown-item hover:none' onClick={ignoreClick}>
 						<input type='range' min='0' max='10' step='1' className='form-range' value={config.volume} onChange={onChange} onClick={ignoreClick} />
 					</div>

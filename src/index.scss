@@ -7,10 +7,12 @@
 
 
 
-@import "./bootswatch/darkly/variables";
+@import "./bootswatch/cerulean/variables";
 @import "./bootstrap/bootstrap.scss";
-@import "./bootswatch/darkly/bootswatch";
+@import "./bootswatch/cerulean/bootswatch";
 
+
+//@import "./bootswatch/solar/bootstrap.css";
 
 body {
 	margin: 0;

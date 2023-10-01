@@ -1,13 +1,19 @@
 import './index.scss';
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
+
 import { usePopper } from 'react-popper';
 
 const Component = (args) => {
-	let { unmount = false, placement = 'bottom-start', ...props } = args;
+	let { placement = 'bottom-start', ...props } = args;
 
-	const [visible, setVisible] = useState(false);
-	const [trigger, setTrigger] = useState(null);
-	const [popper, setPopper] = useState(null);
+	const UNMOUNTED = 0;
+	const MOUNTED = 1;
+	const MOUNT = 2;
+	const UNMOUNT = 3;
+
+	const [mountState, setMountState] = React.useState(UNMOUNTED);
+	const [trigger, setTrigger] = React.useState(null);
+	const [popper, setPopper] = React.useState(null);
 
 	const children = React.Children.toArray(props.children);
 
@@ -20,56 +26,87 @@ const Component = (args) => {
 	}
 
 	const { styles, attributes } = usePopper(trigger, popper, {
-		placement: placement
+		placement: placement,
 	});
 
 	function debug() {
-		//console.log.apply(this, arguments);
+		console.log.apply(this, arguments);
 	}
 
-	useEffect(() => {
-		function onDocumentClick(event) {
-			if (visible) {
-				if (trigger.contains(event.target)) {
-					debug('Inside target', event.target);
-				} else if (popper.contains(event.target)) {
-					debug(event.target);
-					debug('Inside dropdown', event.target);
-					setVisible(false);
-				} else {
-					debug('Both outside target and dropdown', event.target);
-					setVisible(false);
+	React.useEffect(() => {
+		if (mountState == MOUNTED) {
+
+			function onDocumentClick(event) {
+				if (mountState == MOUNTED && trigger && popper) {
+					if (trigger.contains(event.target)) {
+						debug('Inside target', event.target);
+					} else if (popper.contains(event.target)) {
+						debug(event.target);
+						debug('Inside dropdown', event.target);
+						setMountState(UNMOUNT);
+					} else {
+						debug('Both outside target and dropdown', event.target);
+						setMountState(UNMOUNT);
+					}
 				}
 			}
-		}
 
-		if (visible) {
+			debug(`Adding document event listener...`);
 			document.addEventListener('click', onDocumentClick, false);
 
 			return function cleanup() {
+				debug(`Removing document event listener...`);
 				document.removeEventListener('click', onDocumentClick, false);
 			};
 		}
-	}, [popper, visible]);
+
+		if (popper && mountState == MOUNT) {
+			const from = { opacity: 0 };
+			const to = { opacity: 1 };
+			const options = { duration: 200, fill: 'forwards' };
+
+			const animation = popper.animate([from, to], options);
+
+			animation.onfinish = () => {
+				setMountState(MOUNTED);
+			};
+		}
+
+		if (popper && mountState == UNMOUNT) {
+			const from = { opacity: 1 };
+			const to = { opacity: 0 };
+			const options = { duration: 200, fill: 'forwards' };
+
+			const animation = popper.animate([from, to], options);
+
+			animation.onfinish = () => {
+				setMountState(UNMOUNTED);
+			};
+		}
+	}, [popper, mountState]);
 
 	function renderPopper() {
-        if (unmount && !visible)
-            return null;
 
-        let style = { ...styles.popper };
+		if (mountState == UNMOUNTED) {
+			return;
+		}
 
-        if (!visible) {
-            style.display = 'none';
-        }
-
-		let clone = React.cloneElement(popperElement, { ref: setPopper, ...attributes.popper, style:style  });
-//        return clone;
-        return visible ? clone : undefined;
+		return React.cloneElement(popperElement, { ref: setPopper, ...attributes.popper, style: { ...styles.popper } });
 	}
 
 	function renderTrigger() {
 		function onClick(event) {
-			setVisible(!visible);
+			switch (mountState) {
+				case MOUNTED:
+					debug(`Setting state to UNMOUNT`);
+					setMountState(UNMOUNT);
+					break;
+				case UNMOUNTED: {
+					debug(`Setting state to MOUNT`);
+					setMountState(MOUNT);
+					break;
+				}
+			}
 		}
 
 		return React.cloneElement(triggerElement, { onClick: onClick, ref: setTrigger });

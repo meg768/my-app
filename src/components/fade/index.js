@@ -16,7 +16,6 @@ export default function Fade(args) {
 			setVisible(true);
 
 			if (element) {
-  //              element.style.display = 'block';
 				element.animate([from, to], options);
 			}
 		} else {
@@ -24,7 +23,6 @@ export default function Fade(args) {
 				const animation = element.animate([to, from], options);
 
 				animation.onfinish = () => {
-//                    element.style.display = 'none';
 					setVisible(false);
 				};
 			}
