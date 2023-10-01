@@ -2,11 +2,7 @@ import React from 'react';
 import './index.scss';
 
 import Fade from '../../../../components/fade';
-import classNames from 'classnames';
 
-function Modal(props) {
-
-}
 
 export default function (props) {
 	var { template: Template, ...props } = props;
@@ -21,7 +17,7 @@ export default function (props) {
 		setVisible(false);
 	}
 
-    let blur = 'blur(1px)';
+    let blur = 'blur(2px)';
     let backgoundColor = 'rgba(0,0,0,0.10)';
 
     let modalStyle = {

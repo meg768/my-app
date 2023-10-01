@@ -1,0 +1,32 @@
+@use 'sass:color';
+
+.PopupSample > {
+    .dropdown-menu {
+        .dropdown-header {
+            cursor: default;
+        }
+    
+        .dropdown-item {
+            cursor: pointer !important;
+    
+            * {
+                cursor: inherit !important;
+            }
+    
+            &.hover\:none:hover {
+                background-color: inherit;
+                color: inherit;
+            }
+    
+            &.hover\:none:active {
+                background-color: inherit;
+                color: inherit;
+            }
+    
+    
+       
+    
+        }
+    
+    }
+}

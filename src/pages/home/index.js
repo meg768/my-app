@@ -10,7 +10,7 @@ import PopupSample from './samples/popup';
 function Template(props) {
 	var { title, className, children, className, ...props } = props;
 
-    className = classNames('alert alert-light shadow-sm', className);
+    className = classNames('alert alert-light shadow-sm Home', className);
 
 	return (
 		<div className={className}>
@@ -26,10 +26,13 @@ export default function() {
     
 
 	return (
-		<Page className='Home p-5' title='Vår hemsida'>
+		<Page title='Vår hemsida'>
 			<div>
-				<a href='#/about' className='btn btn-primary'>
+				<a href='#/about' className='btn btn-primary m-1'>
 					Om oss
+				</a>
+				<a href='http://98.128.130.56/myapp/' className='btn btn-primary m-1'>
+					Tidigare versioner
 				</a>
                 <hr/>
 

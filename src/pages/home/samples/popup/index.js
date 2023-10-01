@@ -48,12 +48,12 @@ export default function (props) {
 		let optionC = onClick.bind(this, 'C');
 
 		return (
-			<Popup>
+			<Popup >
 				<button className='btn btn-primary m-1'>
 					Radio <span style={{ fontSize: '75%' }}>▼</span>
 				</button>
 
-                <div className=' dropdown-menu mt-1 show shadow-sm'>
+                <div className='PopupSample dropdown-menu mt-1 show shadow-sm'>
                     <div className='dropdown-header' onClick={ignoreClick}>
                         Välj alternativ
                     </div>
@@ -194,7 +194,7 @@ export default function (props) {
 	};
 
 	return (
-		<Template title='Exempel på popups med Bootstrap CSS'>
+		<Template className= 'PopupSample' title='Exempel på popups med Bootstrap CSS'>
 			{radioSample()}
 			{switchSample()}
 			{popoverSample()}
