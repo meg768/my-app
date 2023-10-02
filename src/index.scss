@@ -6,13 +6,13 @@
 //@import "./bootswatch/slate/variables";
 
 
-
-//@import "./bootswatch/united/variables";
-//@import "./bootstrap/bootstrap.scss";
-//@import "./bootswatch/united/bootswatch";
-
-
-@import "./bootswatch/united/bootstrap.css";
+/*
+@import "./bootswatch/darkly/variables";
+@import "./bootstrap/bootstrap.scss";
+@import "./bootswatch/darkly/bootswatch";
+*/
+@import "./bootswatch/darkly/theme.scss";
+//@import "./bootswatch/materia/theme.scss";
 
 body {
 	margin: 0;
