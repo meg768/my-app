@@ -2,6 +2,7 @@ import React from 'react';
 import './index.scss';
 
 import Fade from '../../../../components/fade';
+import Modal from '../../../../components/modal';
 import classNames from 'classnames';
 
 function Switch(props) {
@@ -18,7 +19,7 @@ function Switch(props) {
 export default function (props) {
 	var { template: Template, ...props } = props;
 
-	const defaultConfig = { blurBackground: true, fadeBackground: true, centered:false};
+	const defaultConfig = { blurBackground: true, fadeBackground: true, centered: false };
 
 	const [visible, setVisible] = React.useState(false);
 	const [config, setConfig] = React.useState(defaultConfig);
@@ -31,34 +32,12 @@ export default function (props) {
 		setVisible(false);
 	}
 
-	let blur = 'blur(2px)';
-	let backgoundColor = 'rgba(0,0,0,0.10)';
-
-	let modalStyle = {};
-
-	modalStyle = {
-		display: 'block',
-	};
-
-    if (config.fadeBackground) {
-		modalStyle['background-color'] = backgoundColor;
-
-    }
-    if (config.blurBackground) {
-		modalStyle['backdrop-filter'] = blur;
-		modalStyle['-webkit-backdrop-filter'] = blur;
-    }
-
 	function onChange(prop, event) {
 		let value = { ...config };
 		value[prop] = !value[prop];
 		setConfig(value);
 	}
 
-    let modalDialogClassName = 'modal-dialog';
-    
-    modalDialogClassName = classNames(modalDialogClassName, config.centered ? 'modal-dialog-centered' : null);
-    
 	return (
 		<Template title='Modalt' className='ModalSample'>
 			<p>Ett exempel på modalt med backdrop. Finns lite alternativ.</p>
@@ -67,7 +46,7 @@ export default function (props) {
 					Diffus bakgrund
 				</Switch>
 				<Switch onChange={onChange.bind(this, 'fadeBackground')} checked={config.fadeBackground}>
-					Mörka bakgrunden
+					Tona ut bakgrunden
 				</Switch>
 				<Switch onChange={onChange.bind(this, 'centered')} checked={config.centered}>
 					Centrera dialogen
@@ -77,26 +56,32 @@ export default function (props) {
 				Visa modalt
 			</button>
 
-			<Fade duration={200} show={visible} style={modalStyle} className='modal' tabindex='-1'>
-				<div className={modalDialogClassName}>
-					<div className='modal-content shadow-sm'>
-						<div className='modal-header'>
-							<p className='modal-title' style={{ fontSize: '150%' }}>
-								Pax Vobiscum
-							</p>
-							<button type='button' onClick={onClose} className='btn-close' style={{ fontSize: '60%' }}></button>
-						</div>
-						<div className='modal-body'>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet arcu auctor feugiat congue. Duis in laoreet ex. Vivamus suscipit in nisl sit amet mollis. Phasellus lacinia viverra tempor. </p>
-						</div>
-						<div className='modal-footer'>
-							<button type='button' onClick={onClose} className='btn btn-primary'>
-								Acceptera alla cookies
-							</button>
-						</div>
-					</div>
+
+			<Modal show={false}>
+				<div className='p-3'>
+					<p>A simple primary alert—check it out!</p>
+					<button type='button' onClick={onClose} className='btn btn-primary'>
+						Acceptera alla cookies
+					</button>
 				</div>
-			</Fade>
+			</Modal>
+
+			<Modal show={visible} centered={config.centered} blur={config.blurBackground} backdrop={config.fadeBackground}>
+				<div className='modal-header'>
+					<p className='modal-title' style={{ fontSize: '150%' }}>
+						Pax Vobiscum
+					</p>
+					<button type='button' onClick={onClose} className='btn-close' style={{ fontSize: '60%' }}></button>
+				</div>
+				<div className='modal-body'>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet arcu auctor feugiat congue. Duis in laoreet ex. Vivamus suscipit in nisl sit amet mollis. Phasellus lacinia viverra tempor. </p>
+				</div>
+				<div className='modal-footer'>
+					<button type='button' onClick={onClose} className='btn btn-primary'>
+						Acceptera alla cookies
+					</button>
+				</div>
+			</Modal>
 		</Template>
 	);
 }

@@ -75,7 +75,7 @@ const Popup = (args) => {
 		if (popper && mountState == UNMOUNT) {
 			const from = { opacity: 1 };
 			const to = { opacity: 0 };
-			const options = { duration: 200, fill: 'forwards' };
+			const options = { duration: 100, fill: 'forwards' };
 
 			const animation = popper.animate([from, to], options);
 
