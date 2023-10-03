@@ -40,20 +40,9 @@ export default function (props) {
 
 	return (
 		<Template title='Modalt' className='ModalSample'>
-			<p>Ett exempel på modalt med backdrop. Finns lite alternativ.</p>
-			<div className='my-2 mb-4'>
-				<Switch onChange={onChange.bind(this, 'blurBackground')} checked={config.blurBackground}>
-					Diffus bakgrund
-				</Switch>
-				<Switch onChange={onChange.bind(this, 'fadeBackground')} checked={config.fadeBackground}>
-					Tona ut bakgrunden
-				</Switch>
-				<Switch onChange={onChange.bind(this, 'centered')} checked={config.centered}>
-					Centrera dialogen
-				</Switch>
-			</div>
-			<button onClick={onClick} className='btn btn-primary'>
-				Visa modalt
+			<p>Ett exempel på modalt med backdrop.</p>
+			<button onClick={onClick} className='btn btn-primary btn-border-radius-lg btn-padding-xx'>
+				Visa ett exempel
 			</button>
 
 
@@ -77,7 +66,7 @@ export default function (props) {
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet arcu auctor feugiat congue. Duis in laoreet ex. Vivamus suscipit in nisl sit amet mollis. Phasellus lacinia viverra tempor. </p>
 				</div>
 				<div className='modal-footer'>
-					<button type='button' onClick={onClose} className='btn btn-primary'>
+					<button type='button' onClick={onClose} className='btn btn-primary  '>
 						Acceptera alla cookies
 					</button>
 				</div>

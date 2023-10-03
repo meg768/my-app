@@ -1,0 +1,21 @@
+
+@import "../darkly/variables";
+
+$body-bg: #131e29;
+$body-color: lighten($body-bg, 70);
+$primary: lighten($body-bg, 15);
+$modal-bg: $body-bg; 
+$modal-content-bg: lighten($body-bg, 10); 
+$dropdown-bg: lighten($body-bg, 10); 
+$dropdown-header-color: lighten($body-bg, 60); 
+$popover-header-bg: lighten($body-bg, 10); 
+$popover-bg: lighten($body-bg, 10); 
+
+
+.fodrm-check-input:checked {
+    /* background-color: #23384c; */
+   // border-color: #23384c;
+}
+
+@import "../../bootstrap/bootstrap.scss";
+@import "../darkly/bootswatch";

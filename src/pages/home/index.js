@@ -6,15 +6,18 @@ import './index.scss';
 import Page from '../../components/page';
 import ModalSample from './samples/modal';
 import PopupSample from './samples/popup';
+import ButtonsSample from './samples/buttons';
 
 function Template(props) {
 	var { title, className, children, className, ...props } = props;
 
-    className = classNames('alert alert-light shadow-sm Home', className);
+    className = classNames('shadow-sm', className);
 
 	return (
 		<div className={className}>
-			<h4 className='alert-heading'>{title}</h4>
+            <br/>
+            <br/>
+			<h4 className=''>{title}</h4>
 			<hr />
 			{children}
 		</div>
@@ -38,6 +41,7 @@ export default function() {
 
                 <PopupSample template={Template}/>
                 <ModalSample template={Template}/>
+                <ButtonsSample template={Template}/>
 			</div>
 		</Page>
 	);
