@@ -194,14 +194,12 @@ export default function (props) {
 	};
 
 	return (
-		<Template className= 'PopupSample' title='Exempel på popups med Bootstrap CSS'>
+		<Template className= 'PopupSample' title='Dropdowns'>
 			{radioSample()}
 			{switchSample()}
 			{popoverSample()}
 			{rangeSample()}
 
-			<br />
-			<label className='form-label p-1'>{text}</label>
 		</Template>
 	);
 }

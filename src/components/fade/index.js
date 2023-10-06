@@ -3,7 +3,7 @@ import React from 'react';
 
 
 export default function Fade(args) {
-	const { show = false, tag: Tag = 'div', duration = 100, children, ...props } = args;
+	const { show = false, fadeIn = true, fadeOut = true, tag: Tag = 'div', duration = 100, children, ...props } = args;
 
 	const [element, setElement] = React.useState(null);
 	const [visible, setVisible] = React.useState(show);
@@ -17,7 +17,13 @@ export default function Fade(args) {
 			setVisible(true);
 
 			if (element) {
-				element.animate([from, to], options);
+                if (fadeIn) {
+    				element.animate([from, to], options);
+
+                }
+                else {
+                    element.opacity = to.opacity;
+                }
 			}
 		} else {
 			if (element) {

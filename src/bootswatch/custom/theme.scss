@@ -1,21 +1,75 @@
 
-@import "../darkly/variables";
 
-$body-bg: #131e29;
-$body-color: lighten($body-bg, 70);
-$primary: lighten($body-bg, 15);
+
+$body-bg:#131e29;
+$body-bg:#131e29;
+$body-color: lighten($body-bg, 80);
+
+$white:    #fff !default;
+$gray-100: lighten($body-bg, 50);
+$gray-200: lighten($body-bg, 40);
+$gray-300: lighten($body-bg, 30);
+$gray-400: lighten($body-bg, 25);
+$gray-500: lighten($body-bg, 20);
+$gray-600: lighten($body-bg, 15);
+$gray-700: lighten($body-bg, 10);
+$gray-800: lighten($body-bg, 5);
+$gray-900: lighten($body-bg, 0);
+$black:    #000;
+
+$primary: lighten($body-bg, 10);
+$secondary: lighten($body-bg, 20);
 $modal-bg: $body-bg; 
-$modal-content-bg: lighten($body-bg, 10); 
-$dropdown-bg: lighten($body-bg, 10); 
+$modal-content-bg: lighten($body-bg, 15); 
+$dropdown-bg: lighten($body-bg, 15); 
 $dropdown-header-color: lighten($body-bg, 60); 
-$popover-header-bg: lighten($body-bg, 10); 
-$popover-bg: lighten($body-bg, 10); 
+$popover-header-bg: lighten($body-bg, 18); 
+$popover-bg: lighten($body-bg, 20); 
+$form-check-input-bg: lighten($body-bg, 30);
 
 
-.fodrm-check-input:checked {
-    /* background-color: #23384c; */
-   // border-color: #23384c;
+$card-cap-bg: rgba(0, 0, 0, 0.08);
+
+@import "./variables";
+@import "../../bootstrap/bootstrap.scss";
+@import "./bootswatch";
+
+
+//@import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css";
+//@import "../../bootstrap/bootstrap.scss";
+
+
+
+//@import "../darkly/variables";
+
+/*
+$body-bg:#131e29;
+$body-color: lighten($body-bg, 80);
+$primary: lighten($body-bg, 10);
+$secondary: lighten($body-bg, 20);
+$modal-bg: $body-bg; 
+$modal-content-bg: lighten($body-bg, 15); 
+$dropdown-bg: lighten($body-bg, 15); 
+$dropdown-header-color: lighten($body-bg, 60); 
+$popover-header-bg: lighten($body-bg, 18); 
+$popover-bg: lighten($body-bg, 20); 
+//$card-bg: lighten($body-bg, 15); 
+//$card-cap-bg: lighten($body-bg, 18); 
+$form-check-input-bg: lighten($body-bg, 30);
+//$warning-rgb: 243, 156, 18;
+
+*/
+
+//@import "../../bootstrap/bootstrap.scss";
+//@import "../darkly/bootswatch";
+
+
+.form-check-input:checked {
+    background-color: lighten($form-check-input-bg, 15);
+}
+  
+.form-range {
+    appearance: auto;
 }
 
-@import "../../bootstrap/bootstrap.scss";
-@import "../darkly/bootswatch";
+

@@ -7,17 +7,19 @@ import Page from '../../components/page';
 import ModalSample from './samples/modal';
 import PopupSample from './samples/popup';
 import ButtonsSample from './samples/buttons';
+import CardsSample from './samples/cards';
+import AlertsSample from './samples/alerts';
 
 function Template(props) {
 	var { title, className, children, className, ...props } = props;
 
-    className = classNames('shadow-sm', className);
+    className = classNames('', className);
 
 	return (
 		<div className={className}>
             <br/>
             <br/>
-			<h4 className=''>{title}</h4>
+			<h3 className=''>{title}</h3>
 			<hr />
 			{children}
 		</div>
@@ -42,6 +44,8 @@ export default function() {
                 <PopupSample template={Template}/>
                 <ModalSample template={Template}/>
                 <ButtonsSample template={Template}/>
+                <CardsSample template={Template}/>
+                <AlertsSample template={Template}/>
 			</div>
 		</Page>
 	);

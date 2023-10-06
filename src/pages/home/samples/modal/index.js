@@ -39,10 +39,9 @@ export default function (props) {
 	}
 
 	return (
-		<Template title='Modalt' className='ModalSample'>
-			<p>Ett exempel på modalt med backdrop.</p>
+		<Template title='Modal' className='ModalSample'>
 			<button onClick={onClick} className='btn btn-primary btn-border-radius-lg btn-padding-xx'>
-				Visa ett exempel
+				Show modal
 			</button>
 
 
