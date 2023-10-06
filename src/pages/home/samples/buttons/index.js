@@ -4,34 +4,31 @@ import Fade from '../../../../components/fade';
 
 import classNames from 'classnames';
 
-const Alert = React.forwardRef((props, ref) => {
-	var { dismissable = true, show, dismiss = true, tag, color, role, children, className, ...props } = props;
 
-	if (!show) return null;
 
-	className = classNames(className, { 'alert': true });
-	className = classNames(className, dismissable ? `alert-dismissible` : undefined);
-	className = classNames(className, color ? `alert-${color}` : undefined);
+function Button(args) {
+	let { children, color = 'primary', outline, className, ...props } = args;
 
-	let foo = 'kalle olle pelle';
-	let bar = classNames(foo, { 'olle': false });
-	console.log(foo);
-	console.log(bar);
+    className = classNames(className, 'btn m-1');
 
-	var dismissButton = null;
+    if (color) {
+        if (outline) {
+            className = classNames(className, color ? `btn-outline-${color}` : null);
 
-	if (dismiss) {
-		if (typeof dismiss !== 'function') dismiss = () => {};
+        }
+        else {
+            className = classNames(className, color ? `btn-${color}` : null);
 
-		dismissButton = <button type='button' class='btn-close' data-bs-dismiss='alert'></button>;
-	}
+        }
+    }
+
+
 	return (
-		<div ref={ref} tag={tag} className={className} role={role} {...props}>
-			{dismissButton}
+		<button type='button' className={className}>
 			{children}
-		</div>
+		</button>
 	);
-});
+}
 
 export default function (props) {
 	var { template: Template, ...props } = props;
@@ -43,34 +40,60 @@ export default function (props) {
 
 	return (
 		<Template title='Buttons'>
-			<button type='button' class='btn btn-primary m-1'>
+			<h5 className='m-2'>Normal</h5>
+
+			<Button>
 				Primary
-			</button>
-			<button type='button' class='btn btn-secondary m-1'>
+			</Button>
+			<Button color='secondary'>
 				Secondary
-			</button>
-			<button type='button' class='btn btn-success m-1'>
+			</Button>
+			<Button color='success'>
 				Success
-			</button>
-			<button type='button' class='btn btn-info m-1'>
+			</Button>
+			<Button color='info'>
 				Info
-			</button>
-			<button type='button' class='btn btn-warning m-1'>
+			</Button>
+			<Button color='warning'>
 				Warning
-			</button>
-			<button type='button' class='btn btn-danger m-1'>
+			</Button>
+			<Button color='danger'>
 				Danger
-			</button>
-			<button type='button' class='btn btn-light m-1'>
+			</Button>
+			<Button color='light'>
 				Light
-			</button>
-			<button type='button' class='btn btn-dark m-1'>
+			</Button>
+			<Button color='dark'>
 				Dark
-			</button>
-			<button type='button' class='btn btn-link m-1'>
-				Link
-			</button>
-			<br />
+			</Button>
+			<h5 className='m-2'>Outlined</h5>
+
+			<Button outline>
+				Primary
+			</Button>
+			<Button outline color='secondary'>
+				Secondary
+			</Button>
+			<Button outline color='success'>
+				Success
+			</Button>
+			<Button outline color='info'>
+				Info
+			</Button>
+			<Button outline color='warning'>
+				Warning
+			</Button>
+			<Button outline color='danger'>
+				Danger
+			</Button>
+			<Button outline color='light'>
+				Light
+			</Button>
+			<Button outline color='dark'>
+				Dark
+			</Button>
+			<h5 className='m-2'>Other sizes</h5>
+
 			<button type='button' class='btn btn-primary btn-lg m-1'>
 				Large button
 			</button>
