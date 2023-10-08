@@ -155,20 +155,20 @@ function Fade(args) {
 		}
 	}, [children]);
 
-	let additionalStyle  = {
+	let additionalStyle = {
 		transition: `opacity ${duration}ms ease-in-out`,
-		opacity: show ? 1 : 0
+		opacity: show ? 1 : 0,
 	};
 
 	return (
-		<Tag style={{...style, ...additionalStyle}} {...props}>
+		<Tag style={{ ...style, ...additionalStyle }} {...props}>
 			<div ref={ref}>{children}</div>
 		</Tag>
 	);
 }
 
 function Collapse(args) {
-	let { tag: Tag = 'div', children, show, duration = 100, style = {}, ...props } = args;
+	let { tag: Tag = 'div', children, show, duration = 'auto', style = {}, ...props } = args;
 
 	const ref = React.useRef(null);
 	const [contentHeight, setContentHeight] = React.useState(null);
@@ -177,17 +177,29 @@ function Collapse(args) {
 		if (ref.current) {
 			setContentHeight(ref.current.clientHeight);
 		}
-	});
+	}, [children]);
 
-	let additionalStyle  = {
-		transition: `height ${duration}ms ease-in-out, opacity ${duration}ms ease-in-out`,
+	if (duration === 'auto') {
+		duration = 200;
+	}
+
+	let factor = 2;
+	
+    if (!show) {
+		factor = 1 / factor;
+	}
+	let additionalStyle = {
+		transition: `height ${duration}ms ease-in-out, opacity ${duration + duration * factor}ms ease-in-out`,
 		overflow: 'hidden',
 		opacity: show ? 1 : 0,
 		height: show ? contentHeight : 0,
 	};
 
+	if (!show) {
+		additionalStyle.transition = `height ${duration + duration * factor}ms ease-in-out, opacity ${duration}ms ease-in-out`;
+	}
 	return (
-		<Tag style={{...style, ...additionalStyle}} {...props}>
+		<Tag style={{ ...style, ...additionalStyle }} {...props}>
 			<div ref={ref}>{children}</div>
 		</Tag>
 	);
@@ -205,18 +217,17 @@ export default function (props) {
 		setVisible(!visible);
 	}
 
-    let MyTransition = Collapse;
+	let MyTransition = Collapse;
 
 	return (
 		<Template title='Collapse/Expand'>
-			<MyTransition show={visible} duration={200} unmount={true}>
+			<MyTransition show={visible}>
 				<div className='alert alert-dismissible alert-info'>
 					<h5 className='alert-heading'>Gravida donec phasellus </h5>
 					<span>Ligula tincidunt sodales vel nibh. Magnis luctus suscipit conubia, pellentesque.</span>
 					<button type='button' onClick={onDismiss} class='btn-close'></button>
 				</div>
 			</MyTransition>
-
 
 			<div className='mt-2'>
 				<button className='mts-2 btn btn-primary' onClick={onClick}>
