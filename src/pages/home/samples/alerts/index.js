@@ -34,7 +34,7 @@ const Alert = React.forwardRef((props, ref) => {
 });
 
 export default function (props) {
-	var allAlerts = { warning: true, danger: true, success: true };
+	var allAlerts = { warning: true, danger: true, success: true , info:true};
 	var { template: Template, ...props } = props;
 	const [alerts, setAlerts] = React.useState(allAlerts);
 
@@ -50,8 +50,18 @@ export default function (props) {
 
 	return (
 		<Template title='Alerts'>
+			<Fade show={alerts['info']} fadeIn={false} duration={500}>
+				<div class='alert alert-dismissible alert-info'>
+                    <h5 className='alert-heading'>Gravida donec phasellus </h5>
+					<span>Ligula tincidunt sodales vel nibh. Magnis luctus suscipit conubia, pellentesque.</span>
+					<button type='button' onClick={closeAlert.bind(this, 'info')} class='btn-close'></button>
+				</div>
+			</Fade>
+
+
 			<Fade show={alerts['warning']} fadeIn={false} duration={500}>
 				<div class='alert alert-dismissible alert-warning'>
+                    <h5 className='alert-heading'>Gravida donec phasellus </h5>
 					<span>Ligula tincidunt sodales vel nibh. Magnis luctus suscipit conubia, pellentesque.</span>
 					<button type='button' onClick={closeAlert.bind(this, 'warning')} class='btn-close'></button>
 				</div>
@@ -59,6 +69,7 @@ export default function (props) {
 
 			<Fade show={alerts['danger']} fadeIn={false} duration={500}>
 				<div class='alert alert-dismissible alert-danger'>
+                    <h5 className='alert-heading'>Donec</h5>
 					<button type='button' onClick={closeAlert.bind(this, 'danger')} class='btn-close'></button>
 					<span>Hymenaeos. Velit lectus varius dignissim magna gravida donec phasellus inceptos.</span>
 				</div>
@@ -66,6 +77,7 @@ export default function (props) {
 
 			<Fade show={alerts['success']} fadeIn={false} duration={500}>
 				<div class='alert alert-dismissible alert-success'>
+                <h5 > Luctus suscipit </h5>
 					<button type='button' onClick={closeAlert.bind(this, 'success')} class='btn-close'></button>
 					<span>Dignissim aliquam convallis quisque nonummy tellus rutrum, aliquet tellus fusce condimentum accumsan odio leo suspendisse lorem fusce ligula. Sociis lacinia.</span>
 				</div>

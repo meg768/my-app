@@ -9,6 +9,7 @@ import PopupSample from './samples/popup';
 import ButtonsSample from './samples/buttons';
 import CardsSample from './samples/cards';
 import AlertsSample from './samples/alerts';
+import CollapseSample from './samples/collapse';
 
 function Template(props) {
 	var { title, className, children, className, ...props } = props;
@@ -42,6 +43,7 @@ export default function() {
                 <hr/>
 
                 <PopupSample template={Template}/>
+                <CollapseSample template={Template}/>
                 <ModalSample template={Template}/>
                 <ButtonsSample template={Template}/>
                 <CardsSample template={Template}/>
