@@ -25,7 +25,7 @@ export default function (props) {
         if (visible) {
             return null;
         }
-        
+
 		return (
 			<button className=' btn btn-primary' onClick={toggle}>
 				{!visible ? 'Display alert' : 'Hide alert'}
@@ -36,7 +36,7 @@ export default function (props) {
 	return (
 		<Template title='Collapse/Expand'>
 
-			<Collapse show={visible} unmount={true}>
+			<Collapse show={visible} unmount={true} duration={300}>
 				<div className='alert alert-dismissible alert-warning'>
 					<h5 className='alert-heading'>Gravida donec phasellus </h5>
 					<span>Ligula tincidunt sodales vel nibh. Magnis luctus suscipit conubia, pellentesque.</span>

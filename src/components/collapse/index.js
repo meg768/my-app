@@ -8,6 +8,7 @@ function debug() {
 }
 
 function CollapseUsingTransition({ children, show, unmount = true, duration = 500 }) {
+
 	const ref = React.useRef(null);
 	const [contentHeight, setContentHeight] = React.useState(null);
 
@@ -25,8 +26,8 @@ function CollapseUsingTransition({ children, show, unmount = true, duration = 50
 	return (
 		<Transition in={show} timeout={duration} unmountOnExit={unmount}>
 			{(state) => {
-                let factorA = 0.90;
-                let factorB = 1 - factorA;
+                let factorA = 1;
+                let factorB = 1;
 
                 let style = {};
 				style.overflow = 'hidden';
@@ -42,7 +43,7 @@ function CollapseUsingTransition({ children, show, unmount = true, duration = 50
 
                     case 'exiting':
 					case 'exited': {
-						style.transition = `opacity ${duration * factorB}ms ease-in-out, height ${duration * factorA}ms ease-in-out`;
+						style.transition = `opacity ${duration * factorA}ms ease-in-out, height ${duration *factorB}ms ease-in-out`;
 						style.opacity = 0;
 						style.height = 0;
 						break;
